@@ -1,0 +1,38 @@
+spring:
+  config:
+    import: file:${CONFIG_DIR}/graphql_demo_application.yml
+  profiles:
+    active: @spring.profiles.active@
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints.web.exposure.include: refresh
+
+springdoc:
+  packagesToScan: com.bca.rest.graphqldemo.controller
+
+
+graphql:
+  servlet:
+    enabled: true
+    mapping: /graphql
+  schema-strategy: tools
+  # schema-strategy: annotations
+  # annotations:
+  #   base-package: com.bca.rest.graphqldemo
+  extended-scalars: Long
+  graphiql:
+    mapping: /graphiql
+    endpoint:
+      graphql: /graphql
+      subscriptions: /subscriptions
+    subscriptions:
+      timeout: 30
+      reconnect: false
+    basePath: /
+    enabled: true
+    pageTitle: GraphiQL - Graphql DEMO
+    cdn:
+      enabled: false
+      version: latest

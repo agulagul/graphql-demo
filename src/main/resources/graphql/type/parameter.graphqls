@@ -1,0 +1,46 @@
+scalar Long
+
+type ParameterGroup {
+  param_group_id: ID!
+  param_group_code: String!
+  param_group_name: String!
+  param_group_desc: String
+  parent_id: String
+  created_date: Long!
+  created_by: User!
+  updated_date: Long
+  updated_by: User
+  version: Int!
+  is_active: Boolean!
+}
+
+type ParameterDetail {
+  param_detail_id: ID!
+  param_detail_code: String!
+  param_detail_name: String!
+  param_detail_desc: String
+  parent_id: String
+  param_group: ParameterGroup!
+  created_date: Long!
+  created_by: User!
+  updated_date: String
+  updated_by: String
+  version: Int!
+  is_active: Boolean!
+}
+
+
+input ParameterGroupRequest {
+  param_group_code: String!
+  param_group_name: String!
+  param_group_desc: String
+  parent_id: String
+}
+
+input ParameterDetailRequest {
+  param_detail_code: String!
+  param_detail_name: String!
+  param_detail_desc: String
+  parent_id: String
+  param_group: ParameterGroupRequest!
+}

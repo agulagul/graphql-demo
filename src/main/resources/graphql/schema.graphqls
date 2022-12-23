@@ -1,0 +1,22 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  getAllUser: [User]
+  getUserById(id: ID!): User
+  getAllUserByUsername(input: UserRequest): [User]
+  getAllParameterGroup: [ParameterGroup]
+  getParameterGroupById(id: ID!): ParameterGroup
+  getAllParameterGroupByCode(input: ParameterGroupRequest): [ParameterGroup]
+  getAllParameterDetail: [ParameterDetail]
+  getParameterDetailById(id: ID!): ParameterDetail
+  getAllParameterDetailByCode(input: ParameterDetailRequest): [ParameterDetail]
+}
+
+type Mutation {
+  createUser(input: UserRequest):User
+  updateUser(input: UserUpdate):User
+  deleteUser(input: UserDelete):User
+}

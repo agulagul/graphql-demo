@@ -1,0 +1,56 @@
+server:
+  address: localhost
+  port: 8088
+  servlet:
+    context-path: /graphql-demo
+
+spring:
+  servlet:
+    multipart:
+      maxFileSize: 700MB
+      maxRequestSize: 700MB
+      enabled: true
+
+tools:
+    base-path: /graphql-demo
+
+application:
+  localDev: true
+  version: v1
+  graphql-url: http://${server.address}:${server.port}/${server.servlet.context-path}/graphql
+
+log:
+  threshold: INFO
+  file:
+    name: graphql-demo
+    location: C:/GUL/project/local/graphql-demo/log
+    totalSizeCap: 1GB
+    patternLayout:
+      "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%5p) [%t] [%X{origin}]
+      [%X{sessionid}] [%X{correlation}] [%X{userid}] [%X{useragent}] :: %m%n"
+  console:
+    # patternLayout:
+    #   "%highlight(%5p) [%X{origin}] [%X{sessionid}] [%X{correlation}]
+    #   [%X{userid}] [%X{useragent}] :: %m%n"
+    patternLayout:
+      "%highlight(%5p) :: %m%n"
+  trans:
+    stdoutEnable: Y
+    maxHistory: 1
+    rollingPolicy: 2
+    maxBackupIndex: 10
+    maxFileSize: 10MB
+  verbose:
+    stdoutEnable: N
+    maxHistory: 1
+    rollingPolicy: 2
+    maxBackupIndex: 10
+    maxFileSize: 50MB
+
+datasource:
+  jdbc:
+    url: jdbc:postgresql://localhost:5434/sample_db
+    username: docker
+    password: docker
+  jndi:
+    url: java:jboss/datasources/ds_graphql_demo

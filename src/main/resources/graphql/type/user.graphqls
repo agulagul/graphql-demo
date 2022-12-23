@@ -1,0 +1,26 @@
+scalar Long
+
+type User {
+  user_id: ID!
+  user_name: String!
+  created_date: Long!
+  created_by: String!
+  updated_date: Long
+  updated_by: String
+  version: Int!
+  is_active: Boolean!
+}
+
+
+input UserRequest {
+  user_name: String!
+}
+
+input UserUpdate {
+  user_id: ID!
+  user_name: String!
+}
+
+input UserDelete {
+  user_id: ID!
+}
